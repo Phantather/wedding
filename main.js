@@ -44,7 +44,7 @@ const translations = {
 // Countdown timer
 function updateCountdown() {
     // Set default language to Kyrgyz
-    let currentLang = 'ky';
+    let currentLang = 'ru';
 
     // Get language buttons
     const langButtons = document.querySelectorAll('.lang-btn');
