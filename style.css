@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 
+
 body {
     font-family: 'PT Sans', sans-serif;
     color: #333;
@@ -29,6 +30,39 @@ section.visible {
     opacity: 1;
     transform: translateY(0);
 }
+
+.language-switcher {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    gap: 10px;
+}
+
+.lang-btn {
+    padding: 5px 10px;
+    background-color: rgba(255, 255, 255);
+    color: black;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.lang-btn.active {
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    border: 1px solid black;
+}
+
+.lang-btn:hover {
+    background-color: black;
+    color: white;
+}
+
 
 /* Section 1 - Hero */
 .hero {
@@ -293,6 +327,7 @@ section.visible {
     margin-top: 1.5rem;
     animation: fadeInUp 0.8s ease-out 0.8s both;
 }
+
 
 /* Animations */
 @keyframes fadeIn {
