@@ -1,4 +1,3 @@
-
 const translations = {
     ky: {
         invitation_title: "Урматтуу коноктор!",
@@ -17,7 +16,9 @@ const translations = {
         start_time: "Башталышы: 17:00",
         how_to_get: "Жол багыт",
         welcome_text: "Биздин майрамда<br>сизди көргүбүз келет!",
-        your: "Сиздин"
+        your: "Сиздин",
+        music_on: "Музыканы өчүрүү",
+        music_off: "Музыканы күйгүзүү"
     },
     ru: {
         invitation_title: "Дорогие гости!",
@@ -36,48 +37,124 @@ const translations = {
         start_time: "Начало в 17:00",
         how_to_get: "Как добраться",
         welcome_text: "Будем рады видеть вас<br>на нашем празднике!",
-        your: "Ваши"
+        your: "Ваши",
+        music_on: "Выключить музыку",
+        music_off: "Включить музыку"
     }
 };
 
+// Глобальные переменные
+let currentLang = 'ru';
+let musicPlaying = false;
+const bgMusic = document.getElementById('bgMusic');
+const musicToggle = document.getElementById('musicToggle');
+const musicStatus = document.getElementById('musicStatus');
 
-// Countdown timer
-function updateCountdown() {
-    // Set default language to Kyrgyz
-    let currentLang = 'ru';
+// Инициализация при загрузке страницы
+document.addEventListener('DOMContentLoaded', function() {
+    initLanguage();
+    initMusic();
+    initCountdown();
+    initScrollAnimations();
 
-    // Get language buttons
-    const langButtons = document.querySelectorAll('.lang-btn');
+    startMusic()
+});
 
-    // Function to change language
-    function changeLanguage(lang) {
-        currentLang = lang;
+// Функция для автоматического запуска музыки
+function startMusic() {
+    bgMusic.volume = 0.3; // Устанавливаем комфортную громкость
+    const playPromise = bgMusic.play();
 
-        // Update active button
-        langButtons.forEach(btn => {
-            btn.classList.remove('active');
-            if (btn.dataset.lang === lang) {
-                btn.classList.add('active');
-            }
-        });
-
-        // Update all translatable elements
-        document.querySelectorAll('[data-translate]').forEach(element => {
-            const key = element.getAttribute('data-translate');
-            if (translations[lang][key]) {
-                element.innerHTML = translations[lang][key];
-            }
+    if (playPromise !== undefined) {
+        playPromise.catch(error => {
+            // Если автовоспроизведение заблокировано, показываем кнопку
+            musicPlaying = false;
+            updateMusicStatus();
+            console.log("Автовоспроизведение заблокировано. Пользователь должен взаимодействовать со страницей.");
         });
     }
+}
 
-    // Add click event to language buttons
+// Функция инициализации музыки
+function initMusic() {
+    musicToggle.addEventListener('click', toggleMusic);
+    updateMusicStatus();
+}
+
+
+// Функция инициализации языка
+function initLanguage() {
+    changeLanguage(currentLang);
+
+    const langButtons = document.querySelectorAll('.lang-btn');
     langButtons.forEach(button => {
         button.addEventListener('click', function() {
             changeLanguage(this.dataset.lang);
         });
     });
+}
 
+// Функция смены языка
+function changeLanguage(lang) {
+    currentLang = lang;
 
+    // Обновляем активную кнопку языка
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.lang === lang) {
+            btn.classList.add('active');
+        }
+    });
+
+    // Обновляем все переводимые элементы
+    document.querySelectorAll('[data-translate]').forEach(element => {
+        const key = element.getAttribute('data-translate');
+        if (translations[lang][key]) {
+            element.innerHTML = translations[lang][key];
+        }
+    });
+
+    // Обновляем статус музыки
+    updateMusicStatus();
+}
+
+// Функция переключения музыки
+function toggleMusic() {
+    musicPlaying = !musicPlaying;
+
+    if (musicPlaying) {
+        bgMusic.play().catch(e => console.log("Автовоспроизведение заблокировано:", e));
+        musicToggle.classList.add('playing'); // Добавляем класс для анимации
+    } else {
+        bgMusic.pause();
+        musicToggle.classList.remove('playing'); // Убираем класс анимации
+    }
+
+    updateMusicStatus();
+}
+
+// В функции tryAutoPlay обновите успешный случай:
+playPromise.then(() => {
+    musicPlaying = true;
+    musicToggle.classList.add('playing'); // Добавляем анимацию
+    updateMusicStatus();
+})
+
+// Функция обновления статуса музыки
+function updateMusicStatus() {
+    musicStatus.textContent = musicPlaying
+        ? translations[currentLang].music_on
+        : translations[currentLang].music_off;
+}
+
+// Функция инициализации таймера
+function initCountdown() {
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+}
+
+// Функция обновления таймера
+function updateCountdown() {
     const weddingDate = new Date('September 14, 2025 00:00:00').getTime();
     const now = new Date().getTime();
     const distance = weddingDate - now;
@@ -93,29 +170,22 @@ function updateCountdown() {
     document.getElementById('seconds').innerHTML = seconds.toString().padStart(2, '0');
 }
 
-// Update every second
-updateCountdown();
-setInterval(updateCountdown, 1000);
+// Функция инициализации анимаций при скролле
+function initScrollAnimations() {
+    checkVisibility();
+    window.addEventListener('scroll', checkVisibility);
+    document.querySelector('.hero').classList.add('visible');
+}
 
-// Scroll animations
+// Функция проверки видимости секций
 function checkVisibility() {
     const sections = document.querySelectorAll('section');
+    const windowHeight = window.innerHeight;
 
     sections.forEach(section => {
         const sectionTop = section.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-
         if (sectionTop < windowHeight * 0.75) {
             section.classList.add('visible');
         }
     });
 }
-
-// Initial check
-checkVisibility();
-
-// Check on scroll
-window.addEventListener('scroll', checkVisibility);
-
-// Trigger animations for first section immediately
-document.querySelector('.hero').classList.add('visible');
