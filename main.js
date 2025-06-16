@@ -56,6 +56,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initMusic();
     initCountdown();
     initScrollAnimations();
+
+    startMusic()
 });
 
 // Функция для автоматического запуска музыки
