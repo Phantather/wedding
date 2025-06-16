@@ -155,9 +155,15 @@ function initCountdown() {
 
 // Функция обновления таймера
 function updateCountdown() {
-    const weddingDate = new Date('September 14, 2025 00:00:00').getTime();
+    const weddingDate = new Date('September 14, 2025 17:00:00').getTime(); // Установлено 17:00
     const now = new Date().getTime();
     const distance = weddingDate - now;
+
+    // Если дата уже прошла
+    if (distance < 0) {
+        document.getElementById('countdown').innerHTML = translations[currentLang].wedding_text;
+        return;
+    }
 
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -169,7 +175,6 @@ function updateCountdown() {
     document.getElementById('minutes').innerHTML = minutes.toString().padStart(2, '0');
     document.getElementById('seconds').innerHTML = seconds.toString().padStart(2, '0');
 }
-
 // Функция инициализации анимаций при скролле
 function initScrollAnimations() {
     checkVisibility();
