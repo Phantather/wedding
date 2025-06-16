@@ -52,6 +52,17 @@ const bgMusic = document.getElementById('bgMusic');
 const musicToggle = document.getElementById('musicToggle');
 const musicStatus = document.getElementById('musicStatus');
 
+function autoScrollSections(interval = 4000) {
+    const sections = Array.from(document.querySelectorAll('section'));
+    let current = 0;
+
+    setInterval(() => {
+        current = (current + 1) % sections.length;
+        sections[current].scrollIntoView({ behavior: 'smooth' });
+    }, interval);
+}
+
+
 // Инициализация при загрузке страницы
 document.addEventListener('DOMContentLoaded', function() {
     initLanguage();
@@ -60,6 +71,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initScrollAnimations();
 
     startMusic()
+
+    // autoScrollSections(10000);
 });
 
 // Функция для автоматического запуска музыки
