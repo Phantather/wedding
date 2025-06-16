@@ -16,7 +16,7 @@ const translations = {
         start_time: "Башталышы: 17:00",
         how_to_get: "Жол багыт",
         welcome_text: "Биздин майрамда<br>сизди көргүбүз келет!",
-        your: "Сиздин",
+        your: "Сиздерди урматтоо менен,",
         music_on: "Музыканы өчүрүү",
         music_off: "Музыканы күйгүзүү"
     },
@@ -37,7 +37,7 @@ const translations = {
         start_time: "Начало в 17:00",
         how_to_get: "Как добраться",
         welcome_text: "Будем рады видеть вас<br>на нашем празднике!",
-        your: "Ваши",
+        your: "С уважением,",
         music_on: "Выключить музыку",
         music_off: "Включить музыку"
     }
@@ -56,8 +56,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initMusic();
     initCountdown();
     initScrollAnimations();
-
-    startMusic()
 });
 
 // Функция для автоматического запуска музыки
