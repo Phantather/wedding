@@ -8,7 +8,7 @@ body {
     font-family: 'PT Sans', sans-serif;
     color: #333;
     line-height: 1.6;
-    background-color: #f9f5f0;
+    background-color: #fff;
     overflow-x: hidden;
 }
 
@@ -32,7 +32,7 @@ section.visible {
 
 /* Section 1 - Hero */
 .hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
     background-size: cover;
     background-position: center;
     color: white;
@@ -53,6 +53,10 @@ section.visible {
 }
 
 /* Section 2 - Invitation */
+.invitation {
+    background-color: #fff;
+}
+
 .invitation h2 {
     font-size: 2rem;
     margin-bottom: 1.5rem;
@@ -64,6 +68,7 @@ section.visible {
     max-width: 600px;
     margin: 0 auto 1rem;
     animation: fadeInUp 0.8s ease-out both;
+    color: #333;
 }
 
 .invitation p:nth-child(2) {
@@ -81,7 +86,7 @@ section.visible {
 .wedding-text {
     font-family: 'Edu NSW ACT Foundation', cursive;
     font-size: 40px!important;
-    color: #d4a373;
+    color: #000;
     margin: 1rem 0;
     display: inline-block;
     animation: pulse 2s infinite alternate;
@@ -89,13 +94,14 @@ section.visible {
 
 /* Section 3 - Calendar */
 .calendar {
-    background-color: white;
+    background-color: #f5f5f5;
 }
 
 .calendar h2 {
     margin-bottom: 1.5rem;
     font-size: 2rem;
     animation: fadeIn 0.8s ease-out 0.3s both;
+    color: #333;
 }
 
 .calendar-container {
@@ -107,13 +113,13 @@ section.visible {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    border: 1px solid #eee;
+    border: 1px solid #ddd;
     transform: scale(0.95);
     animation: scaleIn 0.8s ease-out 0.5s both;
 }
 
 .calendar-header {
-    background-color: #d4a373;
+    background-color: #000;
     color: white;
     padding: 12px;
     font-size: 1.3rem;
@@ -127,19 +133,22 @@ section.visible {
     align-items: center;
     font-size: 4.5rem;
     font-weight: bold;
-    color: #333;
+    color: #000;
 }
 
 .calendar-footer {
-    background-color: #f8f9fa;
+    background-color: #f0f0f0;
     padding: 8px;
     font-size: 1.1rem;
-    color: #666;
+    color: #333;
 }
 
 /* Section 4 - Countdown */
 .countdown {
-    background-color: #d4a373;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url('https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
     color: white;
 }
 
@@ -158,46 +167,25 @@ section.visible {
 
 .countdown-box {
     background-color: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.3);
     border-radius: 5px;
     padding: 15px;
     min-width: 70px;
     transform: translateY(20px);
     opacity: 0;
     animation: fadeInUp 0.8s ease-out both;
+    backdrop-filter: blur(5px);
 }
-
-.countdown-box:nth-child(1) {
-    animation-delay: 0.4s;
-}
-.countdown-box:nth-child(2) {
-    animation-delay: 0.6s;
-}
-.countdown-box:nth-child(3) {
-    animation-delay: 0.8s;
-}
-.countdown-box:nth-child(4) {
-    animation-delay: 1s;
-}
-
-.countdown-number {
-    font-size: 2rem;
-    font-weight: bold;
-}
-
-.countdown-label {
-    font-size: 0.8rem;
-    text-transform: uppercase;
-}
-
 /* Section 5 - Location */
 .location {
-    background-color: #f0e6dd;
+    background-color: #fff;
 }
 
 .location h2 {
     font-size: 2rem;
     margin-bottom: 1.2rem;
     animation: fadeIn 0.8s ease-out 0.3s both;
+    color: #333;
 }
 
 .location-info {
@@ -209,7 +197,7 @@ section.visible {
     font-size: 1.4rem;
     font-weight: 500;
     margin-bottom: 0.8rem;
-    color: #d4a373;
+    color: #000;
     animation: fadeInUp 0.8s ease-out 0.5s both;
 }
 
@@ -217,6 +205,7 @@ section.visible {
     font-size: 1rem;
     margin-bottom: 1.2rem;
     animation: fadeInUp 0.8s ease-out 0.7s both;
+    color: #333;
 }
 
 .location-time {
@@ -224,6 +213,7 @@ section.visible {
     font-weight: 500;
     margin-bottom: 1.5rem;
     animation: fadeInUp 0.8s ease-out 0.9s both;
+    color: #333;
 }
 
 .location-map {
@@ -239,7 +229,7 @@ section.visible {
 
 .location-btn {
     display: inline-block;
-    background-color: #d4a373;
+    background-color: #000;
     color: white;
     padding: 10px 20px;
     border-radius: 50px;
@@ -252,7 +242,7 @@ section.visible {
 }
 
 .location-btn:hover {
-    background-color: #b38a5f;
+    background-color: #333;
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
@@ -262,19 +252,33 @@ section.visible {
 }
 
 /* Section 6 - Welcome */
+.welcome {
+    background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),
+    url('https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+}
+
 .welcome p {
     font-size: 1.4rem;
     max-width: 600px;
     margin: 0 auto;
     animation: fadeIn 1.2s ease-out 0.5s both;
+    color: #000;
+    /*background-color: rgba(255,255,255,0.7);*/
+    padding: 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(2px);
 }
+
 
 /* Section 7 - Signature */
 .signature {
-    background-color: #f0e6dd;
+    background-color: #fff;
 }
 .signature p{
     font-size: 2rem;
+    color: #333;
 }
 
 
@@ -285,7 +289,7 @@ section.visible {
 .signature-names {
     font-family: 'Edu NSW ACT Foundation', cursive;
     font-size: 40px!important;
-    color: #d4a373;
+    color: #000;
     margin-top: 1.5rem;
     animation: fadeInUp 0.8s ease-out 0.8s both;
 }
@@ -330,7 +334,7 @@ section.visible {
 }
 
 .countdown-box:hover {
-    background-color: rgba(255,255,255,0.3);
+    background-color: rgba(255,255,255,0.2);
     transition: background-color 0.3s ease;
 }
 
