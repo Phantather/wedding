@@ -32,7 +32,7 @@ section.visible {
 
 /* Section 1 - Hero */
 .hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
     background-size: cover;
     background-position: center;
     color: white;
@@ -145,8 +145,8 @@ section.visible {
 
 /* Section 4 - Countdown */
 .countdown {
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url('https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('hands-2-DXMzTHmh.jpg');
     background-size: cover;
     background-position: center;
     color: white;
@@ -253,7 +253,7 @@ section.visible {
 
 /* Section 6 - Welcome */
 .welcome {
-    background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url('https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
     background-size: cover;
     background-position: center;
@@ -264,11 +264,11 @@ section.visible {
     max-width: 600px;
     margin: 0 auto;
     animation: fadeIn 1.2s ease-out 0.5s both;
-    color: #000;
+    color: #ffff;
     /*background-color: rgba(255,255,255,0.7);*/
     padding: 20px;
     border-radius: 10px;
-    backdrop-filter: blur(2px);
+    /*backdrop-filter: blur(2px);*/
 }
 
 
