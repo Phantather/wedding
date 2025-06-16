@@ -184,7 +184,6 @@ function initScrollAnimations() {
     document.querySelector('.hero').classList.add('visible');
 }
 
-// Функция проверки видимости секций
 function checkVisibility() {
     const sections = document.querySelectorAll('section');
     const windowHeight = window.innerHeight;
@@ -193,6 +192,8 @@ function checkVisibility() {
         const sectionTop = section.getBoundingClientRect().top;
         if (sectionTop < windowHeight * 0.75) {
             section.classList.add('visible');
+        } else {
+            section.classList.remove('visible'); // Сброс анимации при уходе секции вверх
         }
     });
 }
