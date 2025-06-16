@@ -18,7 +18,8 @@ const translations = {
         welcome_text: "Биздин майрамда<br>сизди көргүбүз келет!",
         your: "Сиздерди урматтоо менен,",
         music_on: "Музыканы өчүрүү",
-        music_off: "Музыканы күйгүзүү"
+        music_off: "Музыканы күйгүзүү",
+        and: "жана"
     },
     ru: {
         invitation_title: "Дорогие гости!",
@@ -39,7 +40,8 @@ const translations = {
         welcome_text: "Будем рады видеть вас<br>на нашем празднике!",
         your: "С уважением,",
         music_on: "Выключить музыку",
-        music_off: "Включить музыку"
+        music_off: "Включить музыку",
+        and: "и"
     }
 };
 
