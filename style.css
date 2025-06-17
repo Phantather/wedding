@@ -40,29 +40,15 @@ section.visible {
     gap: 10px;
 }
 
-.lang-btn {
+.lang-select {
     padding: 5px 10px;
-    background-color: rgba(255, 255, 255);
-    color: black;
-    border: 1px solid black;
     border-radius: 5px;
-    cursor: pointer;
     font-size: 14px;
-    transition: all 0.3s ease;
-}
-
-.lang-btn.active {
-    background-color: black;
-    color: white;
-    font-weight: bold;
     border: 1px solid black;
+    background: #fff;
+    color: #000;
+    cursor: pointer;
 }
-
-.lang-btn:hover {
-    background-color: black;
-    color: white;
-}
-
 
 /* Section 1 - Hero */
 .hero {
@@ -396,7 +382,7 @@ section.visible {
 .scroll-down {
     position: absolute;
     left: 50%;
-    bottom: 30px;
+    bottom: 100px;
     transform: translateX(-50%);
     z-index: 10;
     animation: bounce 1.5s infinite;

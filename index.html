@@ -15,13 +15,15 @@
 
 <!-- Language Switcher -->
 <div class="language-switcher">
-  <button class="lang-btn" data-lang="ky">Кыр</button>
-  <button class="lang-btn active" data-lang="ru">Рус</button>
+  <select id="langSelect" class="lang-select">
+    <option value="ky">Кыр</option>
+    <option value="ru" selected>Рус</option>
+    <option value="deu">Deu</option>
+  </select>
 </div>
-
 <!-- Section 1 - Hero -->
 <section class="hero">
-  <h1 class="names">Арген - Нуржамал</h1>
+  <h1 class="names" data-translate="names">Арген - Нуржамал</h1>
   <p class="date">14 / 09 / 2025</p>
   <!-- Music Player -->
   <div class="music-player">
@@ -57,16 +59,16 @@
     <div class="calendar-month">СЕНТЯБРЬ</div>
     <div class="calendar-year">2025</div>
     <div class="calendar-weekday" data-translate="sunday">ВОСКРЕСЕНЬЕ</div>
-    <div class="calendar-time">17:00</div>
+    <div class="calendar-time" data-translate="start_time">17:00</div>
 
     <div class="calendar-weekdays">
-      <div class="weekday">ПН</div>
-      <div class="weekday">ВТ</div>
-      <div class="weekday">СР</div>
-      <div class="weekday">ЧТ</div>
-      <div class="weekday">ПТ</div>
-      <div class="weekday">СБ</div>
-      <div class="weekday">ВС</div>
+      <div class="weekday" data-translate="pn">ПН</div>
+      <div class="weekday" data-translate="vt">ВТ</div>
+      <div class="weekday" data-translate="sr">СР</div>
+      <div class="weekday" data-translate="ct">ЧТ</div>
+      <div class="weekday" data-translate="pt">ПТ</div>
+      <div class="weekday" data-translate="sb">СБ</div>
+      <div class="weekday" data-translate="vk">ВС</div>
     </div>
 
     <div class="calendar-days">
@@ -131,8 +133,8 @@
 <section class="location">
   <h2 data-translate="location_title">Место проведения</h2>
   <div class="location-info">
-    <p class="location-place">Ресторан "Хан-Тенгри"</p>
-    <p class="location-address">г. Нарын, ул. Жусупова, 2/6</p>
+    <p class="location-place" data-translate="restaurant">Ресторан "Хан-Тенгри"</p>
+    <p class="location-address" data-translate="address">г. Нарын, ул. Жусупова, 2/6</p>
     <p class="location-time" data-translate="start_time">Начало в 17:00</p>
 
     <iframe class="location-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1001.6493629320039!2d76.02567446552526!3d41.42275065724733!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38906bb5f6a5044b%3A0xedd4c84f87cc4dbc!2sKhan%20Tengri%20Restaurant!5e0!3m2!1sru!2skg!4v1750062761067!5m2!1sru!2skg" allowfullscreen="" loading="lazy"></iframe>
@@ -151,7 +153,7 @@
 <!-- Section 7 - Signature -->
 <section class="signature">
   <p data-translate="your">Ваши</p>
-  <p class="signature-names">Арген <span data-translate="and"></span> Нуржамал!</p>
+  <p class="signature-names"><span data-translate="argen">Арген</span> <span data-translate="and"></span> <span data-translate="nurzhamal">Нуржамал</span>!</p>
 </section>
 
 <script src="main.js"></script>
