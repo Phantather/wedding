@@ -5,7 +5,7 @@ const translations = {
         wedding_text: "үйлөнүү тоюбуз боло тургандыгын жарыялоого кубанычтабыз!",
         invitation_text2: "Бул өзгөчө күнү биз сиз менен жүрөк козгоорлук окуяны бөлүшүү үчүн сүйүктүү жана жакын адамдарыбыздын курчоосунда болгубуз келет!",
         calendar_title: "Биздин майрамдын датасы",
-        september: "Сентябрь 2025",
+        september: "Сентябрь",
         sunday: "Жекшемби",
         countdown_title: "Үйлөнүү тойубузга чейин:",
         days: "күн",
@@ -39,7 +39,7 @@ const translations = {
         wedding_text: "день нашей свадьбы!",
         invitation_text2: "В этот особенный день мы хотим оказаться в окружении дорогих и близких нам людей!",
         calendar_title: "Дата нашего торжества",
-        september: "Сентябрь 2025",
+        september: "Сентябрь",
         sunday: "Воскресенье",
         countdown_title: "До нашей свадьбы осталось:",
         days: "дней",
@@ -73,7 +73,7 @@ const translations = {
         wedding_text: "unser Hochzeitstag!",
         invitation_text2: "An diesem besonderen Tag möchten wir von unseren liebsten und wichtigsten Menschen umgeben sein!",
         calendar_title: "Datum unserer Feier",
-        september: "September 2025",
+        september: "September",
         sunday: "Sonntag",
         countdown_title: "Noch so viele Tage bis zu unserer Hochzeit:",
         days: "Tage",
@@ -164,14 +164,21 @@ function initLanguage() {
     }
     changeLanguage(currentLang);
 
-    const langSelect = document.getElementById('langSelect');
-    langSelect.value = currentLang;
-    langSelect.addEventListener('change', function() {
-        changeLanguage(this.value);
-        localStorage.setItem('wedding_lang', this.value); // Сохраняем выбор
+    // Обработка кнопок выбора языка
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === currentLang);
+        btn.addEventListener('click', function() {
+            const lang = this.dataset.lang;
+            if (lang !== currentLang) {
+                changeLanguage(lang);
+                localStorage.setItem('wedding_lang', lang);
+                // Обновляем активную кнопку
+                document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            }
+        });
     });
 }
-
 // Функция смены языка
 function changeLanguage(lang) {
     currentLang = lang;

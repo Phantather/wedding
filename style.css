@@ -40,14 +40,27 @@ section.visible {
     gap: 10px;
 }
 
-.lang-select {
+.lang-btn {
     padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 14px;
+    background-color: rgba(255, 255, 255);
+    color: black;
     border: 1px solid black;
-    background: #fff;
-    color: #000;
+    border-radius: 5px;
     cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.lang-btn.active {
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    border: 1px solid black;
+}
+
+.lang-btn:hover {
+    background-color: black;
+    color: white;
 }
 
 /* Section 1 - Hero */
