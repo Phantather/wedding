@@ -191,7 +191,7 @@ function changeLanguage(lang) {
 
     document.querySelectorAll('[data-translate="names"], [data-translate="argen"], [data-translate="nurzhamal"]').forEach(el => {
         if (lang === 'deu') {
-            el.style.fontFamily = "'MyFont', cursive";
+            el.style.fontFamily = "'Dancing Script', cursive";
         } else {
             el.style.fontFamily = "'Edu NSW ACT Foundation', cursive";
         }
