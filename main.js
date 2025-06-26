@@ -189,7 +189,7 @@ function changeLanguage(lang) {
         }
     });
 
-    document.querySelectorAll('[data-translate="names"], [data-translate="argen"], [data-translate="nurzhamal"]').forEach(el => {
+    document.querySelectorAll('[data-translate="names"], [data-translate="argen"], [data-translate="nurzhamal"], [data-translate="wedding_text"]').forEach(el => {
         if (lang === 'deu') {
             el.style.fontFamily = "'Dancing Script', cursive";
         } else {
