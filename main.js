@@ -19,10 +19,10 @@ const translations = {
         your: "Сиздерди урматтоо менен,",
         music_on: "Музыканы өчүрүү",
         music_off: "Музыканы күйгүзүү",
-        and: "жана",
+        and: "&",
         argen: "Арген",
         nurzhamal: "Нуржамал",
-        names: "Арген - Нуржамал",
+        names: "Арген & Нуржамал",
         restaurant: "\"Хан-Тенгри\" Ресторан",
         address: "Нарын шаары, Жусупов көчөсү, 2/6",
         pn: "Дүй",
@@ -53,10 +53,10 @@ const translations = {
         your: "С уважением,",
         music_on: "Выключить музыку",
         music_off: "Включить музыку",
-        and: "и",
+        and: "&",
         argen: "Арген",
         nurzhamal: "Нуржамал",
-        names: "Арген - Нуржамал",
+        names: "Арген & Нуржамал",
         restaurant: "Ресторан \"Хан-Тенгри",
         address: "г. Нарын, ул. Жусупова, 2/6",
         pn: "ПН",
@@ -188,6 +188,15 @@ function changeLanguage(lang) {
             element.innerHTML = translations[lang][key];
         }
     });
+
+    document.querySelectorAll('[data-translate="names"], [data-translate="argen"], [data-translate="nurzhamal"]').forEach(el => {
+        if (lang === 'deu') {
+            el.style.fontFamily = "'MyFont', cursive";
+        } else {
+            el.style.fontFamily = "'Edu NSW ACT Foundation', cursive";
+        }
+    });
+
     updateMusicStatus();
 }
 
