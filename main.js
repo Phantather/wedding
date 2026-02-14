@@ -108,7 +108,11 @@ let currentLang = 'ru';
 let musicPlaying = false;
 const bgMusic = document.getElementById('bgMusic');
 const musicToggle = document.getElementById('musicToggle');
-const musicStatus = document.getElementById('musicStatus');
+const vinylWrapper = document.getElementById('vinylWrapper');
+const playIcon = document.getElementById('playIcon');
+const progressBar = document.getElementById('progressBar');
+const currentTimeEl = document.getElementById('currentTime');
+const totalTimeEl = document.getElementById('totalTime');
 
 function autoScrollSections(interval = 4000) {
     const sections = Array.from(document.querySelectorAll('section'));
@@ -151,7 +155,19 @@ function startMusic() {
 // Функция инициализации музыки
 function initMusic() {
     musicToggle.addEventListener('click', toggleMusic);
-    updateMusicStatus();
+    vinylWrapper.addEventListener('click', toggleMusic);
+
+    // Прогресс-бар
+    bgMusic.addEventListener('timeupdate', updateProgress);
+    bgMusic.addEventListener('loadedmetadata', function() {
+        totalTimeEl.textContent = formatTime(bgMusic.duration);
+    });
+
+    progressBar.addEventListener('input', function() {
+        if (bgMusic.duration) {
+            bgMusic.currentTime = (this.value / 100) * bgMusic.duration;
+        }
+    });
 }
 
 
@@ -197,7 +213,6 @@ function changeLanguage(lang) {
         }
     });
 
-    updateMusicStatus();
 }
 
 // Функция переключения музыки
@@ -205,28 +220,40 @@ function toggleMusic() {
     musicPlaying = !musicPlaying;
 
     if (musicPlaying) {
-        bgMusic.play().catch(e => console.log("Автовоспроизведение заблокировано:", e));
-        musicToggle.classList.add('playing'); // Добавляем класс для анимации
+        bgMusic.play().catch(e => {
+            console.log("Автовоспроизведение заблокировано:", e);
+            musicPlaying = false;
+            updatePlayerUI();
+        });
     } else {
         bgMusic.pause();
-        musicToggle.classList.remove('playing'); // Убираем класс анимации
     }
 
-    updateMusicStatus();
+    updatePlayerUI();
 }
 
-// В функции tryAutoPlay обновите успешный случай:
-playPromise.then(() => {
-    musicPlaying = true;
-    musicToggle.classList.add('playing'); // Добавляем анимацию
-    updateMusicStatus();
-})
+// Обновить UI плеера (иконка, вращение винила)
+function updatePlayerUI() {
+    playIcon.className = musicPlaying ? 'fas fa-pause' : 'fas fa-play';
+    vinylWrapper.classList.toggle('playing', musicPlaying);
+}
 
-// Функция обновления статуса музыки
-function updateMusicStatus() {
-    musicStatus.textContent = musicPlaying
-        ? translations[currentLang].music_on
-        : translations[currentLang].music_off;
+// Обновить прогресс-бар и время
+function updateProgress() {
+    if (bgMusic.duration) {
+        const pct = (bgMusic.currentTime / bgMusic.duration) * 100;
+        progressBar.value = pct;
+        progressBar.style.setProperty('--progress', pct + '%');
+        currentTimeEl.textContent = formatTime(bgMusic.currentTime);
+    }
+}
+
+// Форматировать секунды в m:ss
+function formatTime(sec) {
+    if (!sec || isNaN(sec)) return '0:00';
+    const m = Math.floor(sec / 60);
+    const s = Math.floor(sec % 60);
+    return m + ':' + s.toString().padStart(2, '0');
 }
 
 // Функция инициализации таймера
@@ -243,7 +270,10 @@ function updateCountdown() {
 
     // Если дата уже прошла
     if (distance < 0) {
-        document.getElementById('countdown').innerHTML = translations[currentLang].wedding_text;
+        document.getElementById('days').innerHTML = '0';
+        document.getElementById('hours').innerHTML = '00';
+        document.getElementById('minutes').innerHTML = '00';
+        document.getElementById('seconds').innerHTML = '00';
         return;
     }
 

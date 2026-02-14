@@ -9,16 +9,11 @@
   <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@400&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">s
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-
-
-
-
 
 <!-- Language Switcher -->
 <div class="language-switcher">
@@ -32,15 +27,30 @@
 <section class="hero">
   <h1 class="names" data-translate="names">Арген - Нуржамал</h1>
   <p class="date">14 / 09 / 2025</p>
-  <!-- Music Player -->
+  <!-- Music Player - Vinyl -->
   <div class="music-player">
-    <button id="musicToggle" class="music-btn pulse">
-      <i class="fas fa-music"></i>
-      <span id="musicStatus" data-translate="music_off">Музыка выкл</span>
-    </button>
+    <div class="vinyl-wrapper" id="vinylWrapper">
+      <div class="vinyl" id="vinylDisc">
+        <div class="vinyl-groove vinyl-groove-1"></div>
+        <div class="vinyl-groove vinyl-groove-2"></div>
+        <div class="vinyl-groove vinyl-groove-3"></div>
+        <div class="vinyl-label">
+          <div class="vinyl-hole"></div>
+        </div>
+      </div>
+    </div>
+    <div class="player-controls">
+      <button id="musicToggle" class="play-btn">
+        <i class="fas fa-play" id="playIcon"></i>
+      </button>
+      <div class="progress-group">
+        <span class="time-display" id="currentTime">0:00</span>
+        <input type="range" id="progressBar" class="progress-bar" min="0" max="100" value="0" step="0.1">
+        <span class="time-display" id="totalTime">0:00</span>
+      </div>
+    </div>
     <audio id="bgMusic" loop>
       <source src="0617.MP3" type="audio/mpeg">
-      Ваш браузер не поддерживает аудио элемент.
     </audio>
   </div>
 
